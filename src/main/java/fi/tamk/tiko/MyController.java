@@ -26,6 +26,20 @@ public class MyController {
 
     }
 
+    //TODO refactor this to fill the database with posts
+ /*   @PostConstruct
+    public void init() {
+        for(int i=0; i<5; i++) {
+            String title = "NEW BLOGPOST";
+            String text = "Welcome to the blogsite, here is a random blogpost";
+            String author = "Weeaboo420";
+            String commentUser = "Naruto666";
+            String commentText = "Can you delete this please?";
+
+            database.save(new Location(lat, lon));
+        }
+    }*/
+
     @RequestMapping(value = "/blogposts",  method=RequestMethod.POST)
     public void saveLocation(@RequestBody BlogPost c) {
 

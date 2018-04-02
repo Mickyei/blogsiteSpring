@@ -45,7 +45,7 @@ public class BlogPost {
     }
 
 
-    @OneToMany(mappedBy="workout", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="blogPost", cascade = CascadeType.ALL)
     @JsonManagedReference
     public Set<Comment> getComments() {
         return comments;

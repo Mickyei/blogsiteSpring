@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 
 
-//Oli exercise
 @Entity
 public class Comment {
 
