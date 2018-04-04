@@ -21,9 +21,18 @@ public class BlogPost {
     private int points;
     private String title;
     private String text;
+    private String author;
 
     public String getText() {
         return text;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public void setText(String text) {

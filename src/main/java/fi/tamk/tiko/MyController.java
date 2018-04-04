@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 // This class acts as a controller.
 // Usually when using @Controller, you will use also @RequestMapping
@@ -27,7 +31,7 @@ public class MyController {
     }
 
     //TODO refactor this to fill the database with posts
- /*   @PostConstruct
+    @PostConstruct
     public void init() {
         for(int i=0; i<5; i++) {
             String title = "NEW BLOGPOST";
@@ -36,9 +40,25 @@ public class MyController {
             String commentUser = "Naruto666";
             String commentText = "Can you delete this please?";
 
-            database.save(new Location(lat, lon));
+            BlogPost newBlog = new BlogPost();
+            newBlog.setText(text);
+            newBlog.setTitle(title);
+            newBlog.setAuthor(author);
+
+            Comment comm = new Comment();
+            comm.setComment(commentText);
+            comm.setUsername(commentUser);
+            comm.setBlogPost(newBlog);
+
+            Set<Comment> comments = new HashSet<Comment>();
+            comments.add(comm);
+            newBlog.setComments(comments);
+
+            database.save(newBlog);
         }
-    }*/
+    }
+
+
 
     @RequestMapping(value = "/blogposts",  method=RequestMethod.POST)
     public void saveLocation(@RequestBody BlogPost c) {
