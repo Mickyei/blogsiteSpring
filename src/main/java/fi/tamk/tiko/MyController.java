@@ -1,12 +1,7 @@
 
 package fi.tamk.tiko;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
@@ -59,18 +54,19 @@ public class MyController {
     }
 
 
-
+    @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping(value = "/blogposts",  method=RequestMethod.POST)
     public void saveLocation(@RequestBody BlogPost c) {
 
         database.save(c);
     }
-
+    @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping(value = "/blogposts",  method=RequestMethod.GET)
     public Iterable<BlogPost> fetchLocation() {
         return database.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping(value = "/blogposts/{id}",  method=RequestMethod.GET)
     public BlogPost fetchLocation(@PathVariable int id) {
         for(BlogPost c : database.findAll()) {
@@ -81,18 +77,19 @@ public class MyController {
         return null;
     }
 
-
+    @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping(value = "/comments",  method=RequestMethod.POST)
     public void saveExercise(@RequestBody Comment c) {
 
         commentRepository.save(c);
     }
-
+    @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping(value = "/comments",  method=RequestMethod.GET)
     public Iterable<Comment> fetchExercise() {
         return commentRepository.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping(value = "/comments/{id}",  method=RequestMethod.GET)
     public Comment fetchExercise(@PathVariable int id) {
         for(Comment c : commentRepository.findAll()) {
