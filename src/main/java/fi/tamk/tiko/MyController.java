@@ -60,6 +60,7 @@ public class MyController {
 
         database.save(c);
     }
+
     @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping(value = "/blogposts",  method=RequestMethod.GET)
     public Iterable<BlogPost> fetchLocation() {
@@ -83,6 +84,37 @@ public class MyController {
 
         commentRepository.save(c);
     }
+
+    @CrossOrigin(origins = "http://localhost:8080")
+    @RequestMapping(value = "/blogposts/{id}", method = RequestMethod.DELETE)
+    public void deleteBlogpost(@PathVariable int id) {
+
+        for(BlogPost c : database.findAll()) {
+            if(c.getId() == id) {
+                database.delete(c);
+
+            }
+        }
+    }
+
+    @CrossOrigin(origins = "http://localhost:8080")
+    @RequestMapping(value = "/blogposts/{id}", method = RequestMethod.PUT)
+    public void updateBlogpost(@PathVariable int id, @RequestBody BlogPost blog) {
+
+        for(BlogPost c : database.findAll()) {
+            if(c.getId() == id) {
+                c.setComments(blog.getComments());
+                c.setAuthor(blog.getAuthor());
+                c.setTitle(blog.getTitle());
+                c.setText(blog.getText());
+                c.setPoints(blog.getPoints());
+            }
+        }
+    }
+
+
+
+
     @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping(value = "/comments",  method=RequestMethod.GET)
     public Iterable<Comment> fetchExercise() {
