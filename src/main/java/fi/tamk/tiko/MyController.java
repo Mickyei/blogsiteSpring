@@ -102,11 +102,7 @@ public class MyController {
 
         for(BlogPost c : database.findAll()) {
             if(c.getId() == id) {
-                c.setComments(blog.getComments());
-                c.setAuthor(blog.getAuthor());
-                c.setTitle(blog.getTitle());
-                c.setText(blog.getText());
-                c.setPoints(blog.getPoints());
+                c = blog;
             }
         }
     }
