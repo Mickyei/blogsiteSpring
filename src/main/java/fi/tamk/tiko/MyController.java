@@ -1,6 +1,8 @@
 
 package fi.tamk.tiko;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -8,6 +10,7 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+
 
 // This class acts as a controller.
 // Usually when using @Controller, you will use also @RequestMapping
@@ -53,14 +56,14 @@ public class MyController {
     }
 
 
-    @CrossOrigin(origins = "http://localhost:3001")
+
     @RequestMapping(value = "/blogposts",  method=RequestMethod.POST)
     public void saveLocation(@RequestBody BlogPost c) {
 
         database.save(c);
     }
 
-    @CrossOrigin(origins = "http://localhost:3001")
+
     @RequestMapping(value = "/blogposts",  method=RequestMethod.GET)
     public Iterable<BlogPost> fetchLocation() {
         return database.findAll();
@@ -96,13 +99,21 @@ public class MyController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3001")
+
     @RequestMapping(value = "/blogposts/{id}", method = RequestMethod.PUT)
     public void updateBlogpost(@PathVariable int id, @RequestBody BlogPost blog) {
 
+        Log logger = LogFactory.getLog(Application.class);
+        logger.info(blog.getTitle());
         for(BlogPost c : database.findAll()) {
+            logger.info(c.getId());
             if(c.getId() == id) {
-                c = blog;
+                logger.info("Match found");
+                c.setPoints(blog.getPoints());
+                c.setText(blog.getText());
+                c.setTitle(blog.getTitle());
+                c.setAuthor(blog.getAuthor());
+                database.save(c);
             }
         }
     }
