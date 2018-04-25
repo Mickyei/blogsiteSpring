@@ -40,7 +40,15 @@ public class Application {
             logger.info("POST one blogpost");
             logger.info("    curl -X POST -H \"Content-type: application/json\" -d \"{\\\"comments\\\": [], \\\"points\\\": 0, \\\"title\\\": \\\"Random title\\\"," +
                     "\\\"text\\\": \\\"Hello everyone\\\",\\\"author\\\": \\\"Ernest Hemingway\\\"}\" " + SERVER  + RESOURCE);
-
+            logger.info("GET all comments");
+            logger.info("    curl -X GET " + SERVER + COMMENTRESOURCE);
+            logger.info("GET one comment");
+            logger.info("    curl -X GET " + SERVER + COMMENTRESOURCE + "1");
+            logger.info("POST one comment");
+            logger.info("    curl -X POST -H \"Content-type: application/json\" -d \"{\\\"amount\\\": 0, \\\"blogpost\\\": 4," +
+                    "\\\"comment\\\": \\\"Hello everyone\\\",\\\"username\\\": \\\"Ernest Hemingway\\\"}\" " + SERVER  + COMMENTRESOURCE);
+            logger.info("DELETE one comment");
+            logger.info("    curl -X DELETE " + SERVER  + COMMENTRESOURCE + "1");
         };
     }
 

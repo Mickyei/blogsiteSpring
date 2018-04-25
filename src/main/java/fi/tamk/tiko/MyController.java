@@ -100,15 +100,24 @@ public class MyController {
     }
 
     @CrossOrigin(origins = "http://localhost:3001")
+    @RequestMapping(value = "/comments/{id}", method = RequestMethod.DELETE)
+    public void deleteComment(@PathVariable int id) {
+
+        for(Comment c : commentRepository.findAll()) {
+            if(c.getId() == id) {
+                commentRepository.delete(c);
+
+            }
+        }
+    }
+
+    @CrossOrigin(origins = "http://localhost:3001")
     @RequestMapping(value = "/blogposts/{id}", method = RequestMethod.PUT)
     public void updateBlogpost(@PathVariable int id, @RequestBody BlogPost blog) {
 
-        Log logger = LogFactory.getLog(Application.class);
-        logger.info(blog.getTitle());
+
         for(BlogPost c : database.findAll()) {
-            logger.info(c.getId());
             if(c.getId() == id) {
-                logger.info("Match found");
                 c.setPoints(blog.getPoints());
                 c.setText(blog.getText());
                 c.setTitle(blog.getTitle());
