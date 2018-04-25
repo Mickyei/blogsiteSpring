@@ -56,14 +56,14 @@ public class MyController {
     }
 
 
-
+    @CrossOrigin(origins = "http://localhost:3001")
     @RequestMapping(value = "/blogposts",  method=RequestMethod.POST)
     public void saveLocation(@RequestBody BlogPost c) {
 
         database.save(c);
     }
 
-
+    @CrossOrigin(origins = "http://localhost:3001")
     @RequestMapping(value = "/blogposts",  method=RequestMethod.GET)
     public Iterable<BlogPost> fetchLocation() {
         return database.findAll();
@@ -99,7 +99,7 @@ public class MyController {
         }
     }
 
-
+    @CrossOrigin(origins = "http://localhost:3001")
     @RequestMapping(value = "/blogposts/{id}", method = RequestMethod.PUT)
     public void updateBlogpost(@PathVariable int id, @RequestBody BlogPost blog) {
 
