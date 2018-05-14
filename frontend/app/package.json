@@ -1,0 +1,22 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:8080",
+  "homepage": "/app/build",
+  "dependencies": {
+    "npm": "^5.8.0",
+    "bootstrap": "^3.3.7",
+    "bootstrap-jquery": "^3.3.2",
+    "jQuery": "^1.7.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build && rm -rf ../../service/src/main/resources/static/app/build && mv build/ ../../service/src/main/resources/static/app/",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
