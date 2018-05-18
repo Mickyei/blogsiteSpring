@@ -30,7 +30,7 @@ public class MyController {
 
     @PostConstruct
     public void init() {
-        for(int i=0; i<5; i++) {
+
             String title = "NEW BLOGPOST";
             String text = "Welcome to the blogsite, here is a random blogpost";
             String author = "Weeaboo420";
@@ -52,7 +52,7 @@ public class MyController {
             newBlog.setComments(comments);
 
             database.save(newBlog);
-        }
+
     }
 
 
