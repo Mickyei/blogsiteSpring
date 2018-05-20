@@ -52,18 +52,18 @@ public class Application {
         };
     }
 
-    @Bean
-     public FilterRegistrationBean corsFilter() {
-      UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-      CorsConfiguration config = new CorsConfiguration();
-      config.setAllowCredentials(true);
-      config.addAllowedOrigin("http://localhost:3001");
-      config.addAllowedHeader("*");
-      config.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE"));
-     source.registerCorsConfiguration("*//**", config);
-     FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
-     bean.setOrder(0);
-      return bean;
-     }
+    //@Bean
+     //public FilterRegistrationBean corsFilter() {
+    //UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    // CorsConfiguration config = new CorsConfiguration();
+    // config.setAllowCredentials(true);
+    // config.addAllowedOrigin("http://localhost:3001");
+    // config.addAllowedHeader("*");
+    // config.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE"));
+    // source.registerCorsConfiguration("*//**", config);
+    // FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
+    //bean.setOrder(0);
+    //  return bean;
+    //}
 
 }
