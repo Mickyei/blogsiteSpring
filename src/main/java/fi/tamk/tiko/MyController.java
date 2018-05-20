@@ -126,6 +126,7 @@ public class MyController {
     }
 
 
+    
     @CrossOrigin(origins = "http://159.65.193.120:3001")
     @RequestMapping(value = "/comments",  method=RequestMethod.GET)
     public Iterable<Comment> fetchExercise() {
