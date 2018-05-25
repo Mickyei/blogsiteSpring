@@ -17,7 +17,7 @@ import java.util.Arrays;
 @SpringBootApplication
 public class Application {
 
-    public static String SERVER = "206.189.15.232";
+    public static String SERVER = "206.189.15.232:8080/";
     public static String COMMENTRESOURCE = "comments/";
     public static String RESOURCE = "blogposts/";
 
