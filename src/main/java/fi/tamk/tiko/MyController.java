@@ -56,19 +56,19 @@ public class MyController {
     }
 
 
-    @CrossOrigin(origins = "http://159.65.193.120:3001")
+    @CrossOrigin(origins = {"http://159.65.193.120:3001", "http://localhost:8080"})
     @RequestMapping(value = "/blogposts",  method=RequestMethod.POST)
     public void saveLocation(@RequestBody BlogPost c) {
 
         database.save(c);
     }
 
-    @CrossOrigin(origins = "http://159.65.193.120:3001")    @RequestMapping(value = "/blogposts",  method=RequestMethod.GET)
+    @CrossOrigin(origins = {"http://159.65.193.120:3001", "http://localhost:8080"})    @RequestMapping(value = "/blogposts",  method=RequestMethod.GET)
     public Iterable<BlogPost> fetchLocation() {
         return database.findAll();
     }
 
-    @CrossOrigin(origins = "http://159.65.193.120:3001")    @RequestMapping(value = "/blogposts/{id}",  method=RequestMethod.GET)
+    @CrossOrigin(origins = {"http://159.65.193.120:3001", "http://localhost:8080"})    @RequestMapping(value = "/blogposts/{id}",  method=RequestMethod.GET)
     public BlogPost fetchLocation(@PathVariable int id) {
         for(BlogPost c : database.findAll()) {
             if(c.getId() == id) {
@@ -78,14 +78,14 @@ public class MyController {
         return null;
     }
 
-    @CrossOrigin(origins = "http://159.65.193.120:3001")
+    @CrossOrigin(origins = {"http://159.65.193.120:3001", "http://localhost:8080"})
     @RequestMapping(value = "/comments",  method=RequestMethod.POST)
     public void saveExercise(@RequestBody Comment c) {
 
         commentRepository.save(c);
     }
 
-    @CrossOrigin(origins = "http://159.65.193.120:3001")
+    @CrossOrigin(origins = {"http://159.65.193.120:3001", "http://localhost:8080"})
     @RequestMapping(value = "/blogposts/{id}", method = RequestMethod.DELETE)
     public void deleteBlogpost(@PathVariable int id) {
 
@@ -97,7 +97,7 @@ public class MyController {
         }
     }
 
-    @CrossOrigin(origins = "http://159.65.193.120:3001")
+    @CrossOrigin(origins = {"http://159.65.193.120:3001", "http://localhost:8080"})
     @RequestMapping(value = "/comments/{id}", method = RequestMethod.DELETE)
     public void deleteComment(@PathVariable int id) {
 
@@ -109,7 +109,7 @@ public class MyController {
         }
     }
 
-    @CrossOrigin(origins = "http://159.65.193.120:3001")
+    @CrossOrigin(origins = {"http://159.65.193.120:3001", "http://localhost:8080"})
     @RequestMapping(value = "/blogposts/{id}", method = RequestMethod.PUT)
     public void updateBlogpost(@PathVariable int id, @RequestBody BlogPost blog) {
 
@@ -127,13 +127,13 @@ public class MyController {
 
 
 
-    @CrossOrigin(origins = "http://159.65.193.120:3001")
+    @CrossOrigin(origins = {"http://159.65.193.120:3001", "http://localhost:8080"})
     @RequestMapping(value = "/comments",  method=RequestMethod.GET)
     public Iterable<Comment> fetchExercise() {
         return commentRepository.findAll();
     }
 
-    @CrossOrigin(origins = "http://159.65.193.120:3001")
+    @CrossOrigin(origins = {"http://159.65.193.120:3001", "http://localhost:8080"})
     @RequestMapping(value = "/comments/{id}",  method=RequestMethod.GET)
     public Comment fetchExercise(@PathVariable int id) {
         for(Comment c : commentRepository.findAll()) {
